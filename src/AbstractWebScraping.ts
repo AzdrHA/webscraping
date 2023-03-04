@@ -1,5 +1,6 @@
 import * as cheerio from 'cheerio'
 import type { CheerioAPI } from 'cheerio'
+import fetch from 'node-fetch';
 
 export default abstract class AbstractWebScraping {
   private request: string | null = null

@@ -7,7 +7,6 @@ module.exports = {
   plugins: ['jsdoc'],
   extends: [
     'standard-with-typescript',
-    'eslint:recommended',
     'plugin:jsdoc/recommended',
     'prettier'
   ],

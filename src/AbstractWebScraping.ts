@@ -32,11 +32,25 @@ export default abstract class AbstractWebScraping {
     'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1 Safari/605.1.15 Brave Chrome/80.0.3987.132 Safari/537.36'
   ]
 
+  /**
+   * @param {string | null} url - URL to request
+   * @protected
+   */
   protected constructor (url: string | null) {
     if (url == null) throw new Error('URL can not be null')
     this.url_request = url
   }
 
+  /**
+   * @param {string} url - URL to request
+   * @protected
+   * @returns {Promise<any>} - Request
+   * @throws {Error} - If URL is null
+   * @description Make request to URL
+   * @example
+   * const request = await this.makeRequest('https://google.com')
+   * console.log(request)
+   */
   private readonly makeRequest = async (url: string): Promise<any> => {
     if (this.request == null) {
       this.request = await fetch(url, {
@@ -54,6 +68,15 @@ export default abstract class AbstractWebScraping {
     return this.request
   }
 
+  /**
+   * @protected
+   * @returns {Promise<CheerioAPI>} - DOM
+   * @throws {Error} - If URL is null
+   * @description Get DOM from URL
+   * @example
+   * const $ = await this.getDOM()
+   * console.log($('title').text())
+   */
   protected readonly getDOM = async (): Promise<CheerioAPI> => {
     const html = await this.makeRequest(this.url_request)
     return cheerio.load(html)

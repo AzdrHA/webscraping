@@ -4,8 +4,12 @@ module.exports = {
     commonjs: true,
     es2021: true
   },
+  plugins: ['jsdoc'],
   extends: [
-    'standard-with-typescript'
+    'standard-with-typescript',
+    'eslint:recommended',
+    'plugin:jsdoc/recommended',
+    'prettier'
   ],
   parserOptions: {
     ecmaVersion: 12,

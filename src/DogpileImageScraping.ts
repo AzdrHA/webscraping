@@ -2,11 +2,29 @@ import AbstractWebScraping from './AbstractWebScraping'
 import * as util from 'util'
 
 export default class DogpileImageScraping extends AbstractWebScraping {
-  public constructor (query: string | null = '') {
+  /**
+   * Creates an instance of DogpileImageScraping.
+   *
+   * @param {string} [query=''] Query to search
+   * @memberof DogpileImageScraping
+   * @throws {Error} If query is empty
+   * @example
+   * const dogpile = new DogpileImageScraping('frog')
+   * dogpile.getPictures().then((links) => {
+   *  console.log(links)
+   *  // => [ 'https://www.frog.org/', 'https://www.frog.org/', ... ]
+   */
+  public constructor (query: string = '') {
     if (query === '') throw new Error('Query cannot be empty')
     super(util.format('https://results.dogpile.com/serp?qc=images&q=%s', query))
   }
 
+  /**
+   * Get all the links from the page
+   *
+   * @returns {Promise<Array<string | undefined>>} Array of links
+   * @memberof DogpileImageScraping
+   */
   public async getPictures (): Promise<Array<string | undefined>> {
     const $ = await this.getDOM()
     const links = $('.image a.link')

@@ -1,5 +1,5 @@
 {
-  "name": "webscraping",
+  "name": "@azdra/webscraping",
   "version": "1.0.0",
   "description": "",
   "main": "lib/index.js",

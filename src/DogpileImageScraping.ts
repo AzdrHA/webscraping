@@ -7,7 +7,7 @@ export default class DogpileImageScraping extends AbstractWebScraping {
    *
    * @param {string} [query=''] Query to search
    * @memberof DogpileImageScraping
-   * @throws {Error} If query is empty
+   * @throws If query is empty
    * @example
    * const dogpile = new DogpileImageScraping('frog')
    * dogpile.getPictures().then((links) => {
@@ -22,7 +22,7 @@ export default class DogpileImageScraping extends AbstractWebScraping {
   /**
    * Get all the links from the page
    *
-   * @returns {Promise<Array<string | undefined>>} Array of links
+   * @returns {Array<string | undefined>} Promise Array of links
    * @memberof DogpileImageScraping
    */
   public async getPictures (): Promise<Array<string | undefined>> {

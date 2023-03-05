@@ -2,7 +2,7 @@
 
 ```js
 const webscraping = require('webscraping')
-const webscraping = new webscraping.DogpileImageScraping()
+const webscraping = new webscraping.DogpileImageScraping('frog')
 webscraping.getPictures().then((res) => {
     console.log(res)
 })
@@ -10,7 +10,7 @@ webscraping.getPictures().then((res) => {
 
 ```ts
 import { DogpileImageScraping } from 'webscraping'
-const webscraping = new DogpileImageScraping()
+const webscraping = new DogpileImageScraping('frog')
 webscraping.getPictures().then((res) => {
     console.log(res)
 })

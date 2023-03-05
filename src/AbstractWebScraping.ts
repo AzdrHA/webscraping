@@ -56,10 +56,13 @@ export default abstract class AbstractWebScraping {
     if (this.request == null) {
       this.request = await axios(url, {
         headers: {
-          'User-Agent': this.USER_AGENTS[Math.floor(Math.random() * this.USER_AGENTS.length)],
+          'accept': '*/*',
+          'User-Agent': 'Chrome',
+          // 'User-Agent': this.USER_AGENTS[Math.floor(Math.random() * this.USER_AGENTS.length)],
           'Accept-Language': 'en-US,en;q=0.5',
           'Accept-Encoding': 'gzip, deflate, br',
-          Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
+          Accept: 'text/html'
+          // Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
         }
       }).then((response) => response.data)
     }

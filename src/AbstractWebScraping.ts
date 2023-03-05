@@ -1,6 +1,6 @@
 import * as cheerio from 'cheerio'
 import type { CheerioAPI } from 'cheerio'
-import axios from "axios";
+import fetch from 'node-fetch';
 
 export default abstract class AbstractWebScraping {
   private request: string | null = null
@@ -54,7 +54,7 @@ export default abstract class AbstractWebScraping {
    */
   private readonly makeRequest = async (url: string): Promise<any> => {
     if (this.request == null) {
-      this.request = await axios(url, {
+      this.request = await fetch(url, {
         headers: {
           'accept': '*/*',
           'User-Agent': 'Chrome',
@@ -64,7 +64,9 @@ export default abstract class AbstractWebScraping {
           Accept: 'text/html'
           // Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'
         }
-      }).then((response) => response.data)
+      })
+          .then(async (response) => await response.text())
+          .then((data) => data)
     }
 
     return this.request

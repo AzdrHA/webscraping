@@ -83,6 +83,7 @@ export default abstract class AbstractWebScraping {
    */
   protected readonly getDOM = async (): Promise<CheerioAPI> => {
     const html = await this.makeRequest(this.url_request)
+    console.log(html)
     return cheerio.load(html)
   }
 }
